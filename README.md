@@ -10,8 +10,8 @@ A note on the state of the code: it's a sloppy mess and all contained in `app/ma
 
 ## Deploying to Mobile
 
-- Add in `metadata/ios_metadata.txt` with proper config
-- Set up iOS & Android for developing with DRGTK
+- Set up iOS & Android for developing with DRGTK w/ proper certs and keystores and such
+- Add in `metadata/ios_metadata.txt`
 - iOS deploys: `$wizards.ios.start env: :hotload`
 - Android deploys:
 
