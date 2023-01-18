@@ -55,6 +55,11 @@ def tick_scene_menu(args)
     key: :waypoint, title: "Waypoint",
     on_click: -> (args) { switch_scene(args, :waypoint)}
   )
+  buttons << button(
+    x: 500.from_left, y: 360.from_top, w: 200, h: 80,
+    key: :scroll, title: "Scroll",
+    on_click: -> (args) { switch_scene(args, :scroll)}
+  )
   buttons.each { |b| b[:tick].call(args, b) }
   args.outputs.primitives << buttons.map { |b| b[:render].call(b) }
 
@@ -99,6 +104,42 @@ def tick_scene_multi_touch(args)
 
   args.outputs.primitives << buttons.map { |b| b[:render].call(b) }
   args.outputs.solids << args.state.rects
+  tick_back_button(args)
+end
+
+def tick_scene_scroll(args)
+  labels = []
+  labels << title(args, "Scroll")
+  labels << { text: "In the Penal Colony by Franz Kafka", x: args.grid.w / 2, y: 150.from_top, size_enum: 10, alignment_enum: 1 }
+
+  args.state.text ||= args.gtk.read_file("data/penal.txt")
+  args.state.text_y ||= 240.from_top
+  args.state.scrolling ||= false
+  args.state.mouse.prev_y ||= nil
+
+  max_character_length = 40
+  split = args.string.wrapped_lines args.state.text, max_character_length
+  labels << split.map_with_index do |s, i|
+    { x: 20, y: args.state.text_y - (i * 50), text: s, size_enum: 8 }
+  end
+
+  if args.inputs.mouse.down
+    args.state.scrolling = true
+  end
+
+  if args.inputs.mouse.up
+    args.state.scrolling = false
+    args.state.mouse.prev_y = nil
+  end
+
+  if args.state.scrolling
+    if args.state.mouse.prev_y
+      args.state.text_y -= args.state.mouse.prev_y - args.inputs.mouse.y
+    end
+    args.state.mouse.prev_y = args.inputs.mouse.y
+  end
+
+  args.outputs.labels << labels
   tick_back_button(args)
 end
 
