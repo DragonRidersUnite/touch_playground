@@ -2,6 +2,9 @@
 
 Collection of demos for using `args.inputs.touch` (or just `args.inputs.mouse`) for making mobile games with DRGTK.
 
+[📱 Test on the web.](https://dragonridersunite.itch.io/dr-touch-playground)
+[📺 Watch the demo.](https://www.youtube.com/watch?v=aZ9jAHDIJYU)
+
 Built with DRGTK v4.1 Pro. Uses portrait & allscreen functions.
 
 Replace `mygame` in the DRGTK engine folder with this repository.
