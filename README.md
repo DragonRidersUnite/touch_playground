@@ -6,6 +6,8 @@ Built with DRGTK v4.1 Pro. Uses portrait & allscreen functions.
 
 Replace `mygame` in the DRGTK engine folder with this repository.
 
+A note on the state of the code: it's a sloppy mess and all contained in `app/main.rb`. This is a learning ground with no standards.
+
 ## Deploying to Mobile
 
 - Add in `metadata/ios_metadata.txt` with proper config
