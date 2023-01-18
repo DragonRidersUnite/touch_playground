@@ -29,3 +29,7 @@ $gtk.reset
 # save a file
 $gtk.console.hide
 ```
+
+## License
+
+This project is dedicated to the public domain and uses the Unlicense. See LICENSE.md for more details.
